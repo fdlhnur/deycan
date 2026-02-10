@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dedey Cantik 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#ffb6c1,#ffc0cb);
+  height:100vh;
+  overflow:hidden;
+}
+
+/* OPENING */
+.opening{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#ff9aaf,#ffc1cc);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:10;
+  animation:fadeIn 1s;
+}
+
+.opening h1{
+  font-family:'Great Vibes',cursive;
+  font-size:42px;
+  color:white;
+  margin-bottom:10px;
+}
+
+.opening p{
+  color:white;
+  opacity:.9;
+}
+
+.tap{
+  margin-top:30px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:rgba(255,255,255,.3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:35px;
+  animation:pulse 1.5s infinite;
+  cursor:pointer;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.15);opacity:.7;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+/* MAIN CONTENT */
+.container{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+}
+
+.card{
+  background:rgba(255,255,255,.92);
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  width:90%;
+  max-width:360px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  animation:scaleUp 1s;
+}
+
+h2{
+  font-family:'Great Vibes',cursive;
+  color:#ff4d6d;
+  font-size:38px;
+}
+
+h3{
+  color:#ff6f91;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:14px;
+  color:#555;
+  min-height:70px;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+@keyframes scaleUp{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+/* HEART */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- OPENING -->
+<div class="opening" id="opening" onclick="openLove()">
+  <h1>Hallooo sayangkuu💕</h1>
+  <p>Dibuka yaaa sayangg</p>
+  <div class="tap">💌</div>
+</div>
+
+<!-- MAIN -->
+<div class="container" id="main">
+  <div class="card">
+    <h2>For Dedeyyy Cantik,Imut,Lucuku. 💖</h2>
+    <p id="text"></p>
+    <button onclick="alert('SAYANG DEDEYYY BANYAK BANYAKKKKK💕')">
+      Klik lagi dong hehe
+    </button>
+    <p> </p>
+    <h3>by:@s_alfnurfdllh_</h3>
+  </div>
+</div>
+
+<script>
+const opening = document.getElementById('opening');
+const main = document.getElementById('main');
+
+function openLove(){
+  opening.style.opacity = 0;
+  setTimeout(()=>{
+    opening.style.display='none';
+    main.style.display='flex';
+    typeText();
+  },800);
+}
+
+// TYPING EFFECT
+const msg = "Sayangkuuuu, Makasih banyak yaa udah hadir di hidupku, kata orang-orang 'yang cantik belum tentu baik' itu salah yaa ternyata, buktinya di kamu ada semua sampe di borong hehe, Semoga jarak ini bukan halangan buat kita saling mencintai yaa sayang , Bahagia Selalu cantikuuuuu, Happy Valentine's Day for you, my favorite person 💖💕";
+let i=0;
+
+function typeText(){
+  if(i<msg.length){
+    document.getElementById("text").innerHTML += msg.charAt(i);
+    i++;
+    setTimeout(typeText,50);
+  }
+}
+
+// HEART FALL
+function createHeart(){
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.innerHTML='💖';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(3+Math.random()*3)+'s';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>
